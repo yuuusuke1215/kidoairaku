@@ -1,1 +1,39 @@
-<%= render 'forms', user: @user %>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3 pt-5">
+
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :name, 'ユーザーネーム' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, 'パスワードの確認' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :profile, 'プロフィール' %>
+        <%= f.text_area :profile, size: "20x10", class: 'form-control' %>
+      </div>
+      
+      <div class="image-change">
+        <a href="https://ja.gravatar.com/" class="btn btn-primary" target="_blank do">ユーザー画像を変更する</a>
+      </div>
+
+      <%= f.submit '登録する', class: 'btn btn-primary btn-lg mx-auto d-block active mb-5' %>
+    <% end %>
+  </div>
+</div>

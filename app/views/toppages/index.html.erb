@@ -1,1 +1,5 @@
-<%= render 'toppages/before_login' %>
+<% if logged_in? %>
+  <p>無事にログインしました</p>
+<% else %>
+  <%= render 'toppages/before_login' %>
+<% end %>
