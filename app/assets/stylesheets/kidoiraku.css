@@ -13,10 +13,6 @@
   text-decoration: none;
 }
 
-.paragraph {
-    display: flex;
-}
-
 h1 {
   font-family: arial,sans-serif;
 }
@@ -33,6 +29,15 @@ p {
   font-family: arial,sans-serif;
 }
 
-.first-paragraph {
+.paragraph {
+  text-align: center;
+}
+
+.bottom-button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-title {
   text-align: center;
 }
