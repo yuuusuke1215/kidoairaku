@@ -1,5 +1,7 @@
 <% if logged_in? %>
-  <p>無事にログインしました</p>
+  <div class="col-sm-8">
+    <%= render 'posts/posts', posts: @posts %>
+  </div>
 <% else %>
   <%= render 'toppages/before_login' %>
 <% end %>

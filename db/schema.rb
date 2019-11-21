@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_115951) do
+ActiveRecord::Schema.define(version: 2019_11_19_083652) do
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.boolean "joy"
+    t.boolean "angry"
+    t.boolean "sad"
+    t.boolean "happy"
+    t.string "video"
+    t.json "images"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -22,4 +40,5 @@ ActiveRecord::Schema.define(version: 2019_11_14_115951) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "posts", "users"
 end

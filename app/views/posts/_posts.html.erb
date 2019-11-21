@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="timeline col-sm-12 offset-lg-2 col-lg-8">
+    <% posts.each do |post| %>
+      <div class="mb-5">
+        <div class="post">
+          <div class="post-left">
+            <img src=<%= post.user.image %> width="50" height="50">
+          </div>
+          
+          <div class="post-right ml-2">
+            <p class="username"><%= post.user.name %></p>
+            <p class="content"><%= post.content %></p>
+          </div>
+        </div>
+        <div class="emotion">
+          <% if post.joy? %>
+            <%= image_tag 'joy.png', size: "25x25", class: "mr-5" %>
+          <% else %>
+            <%= image_tag 'TrMNZcqite9ERPy1574251959_1574252009.png', size: "25x25", class: "mr-5" %>
+          <% end %>
+          
+          <% if post.angry? %>
+            <%= image_tag 'angry.png', size: "25x25", class: "mr-5" %>
+          <% else %>
+            <%= image_tag 'b69imeB0ifKLEYj1574252373_1574252384.png', size: "25x25", class: "mr-5" %>
+          <% end %>
+          
+          <% if post.sad? %>
+            <%= image_tag 'sad.png', size: "25x25", class: "mr-5" %>
+          <% else %>
+            <%= image_tag '97UGwqcW1pYLGvY1574252540_1574252550.png', size: "25x25", class: "mr-5" %>
+          <% end %>
+          
+          <% if post.happy? %>
+            <%= image_tag 'happy.png', size: "25x25", class: "mr-5" %>
+          <% else %>
+            <%= image_tag 'xDwa9RHTN6U7VXT1574252642_1574252647.png', size: "25x25", class: "mr-5" %>
+          <% end %>
+          
+          <!-- <%= link_to "投稿を削除する", post, method: :delete, data: { confirm: "本当に削除してもよいですか?" }, class: 'btn btn-danger btn-sm' %> -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

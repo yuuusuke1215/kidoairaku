@@ -32,6 +32,11 @@
       <div class="image-change">
         <a href="https://ja.gravatar.com/" class="btn btn-primary" target="_blank do">ユーザー画像を変更する</a>
       </div>
+      
+      <div class="field">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      </div>
 
       <%= f.submit '登録する', class: 'btn btn-primary btn-lg mx-auto d-block active mb-5' %>
     <% end %>
