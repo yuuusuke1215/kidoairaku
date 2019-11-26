@@ -4,12 +4,14 @@
       <div class="mb-5">
         <div class="post">
           <div class="post-left">
-            <img src=<%= post.user.image %> width="50" height="50">
+            <%= link_to user_path(post.user) do %>
+              <img src=<%= post.user.image %> width="50" height="50">
+            <% end %>
           </div>
           
           <div class="post-right ml-2">
-            <p class="username"><%= post.user.name %></p>
-            <p class="content"><%= post.content %></p>
+            <p class="username"><%= link_to post.user.name, user_path(post.user), class: "link", :style=>"color:black;" %></p>
+            <p class="content"><%= link_to post.content, post_path(post), :style=>"color:black;" %></p>
           </div>
         </div>
         <div class="emotion">
