@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
   def create
     @post = current_user.posts.build(post_params)
-    @username = params[:username]
     
     if @post.save
       flash[:success] = '無事に投稿できました。'
@@ -23,18 +22,22 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.for_id = params[:for_post_id]
   end
 
   def show
     @post = Post.find(params[:id])
-    @posts = Post.where(for_id: @post.id)
+    @comments = @post.comments
+    @comment = Comment.new
+  end
+  
+  def joy
+    @posts = Post.all.where(joy: true)
   end
   
   private
 
   def post_params
-    params.require(:post).permit(:content, :image1, :image2, :image3, :image4, :joy, :angry, :sad, :happy)
+    params.require(:post).permit(:content, :image1, :image2, :image3, :image4, :joy, :angry, :sad, :happy, :for_id)
   end
   
   def correct_user

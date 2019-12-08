@@ -1,0 +1,32 @@
+<div class="left-bar d-none d-sm-block col-sm-6 col-lg-3 profile">
+  <img src=<%= user.image %> width="100" height="100" class="profile-image">
+  <h3 class="mt-2 profile-username"><%= user.name %></h3>
+  <p><%= user.profile %></p>
+  <% if current_user.id == user.id %>
+    <%= link_to '編集する', edit_user_path, class: "btn btn-primary mt-2" %>
+    <%= link_to 'ログアウト', logout_path, method: :delete, class: "btn btn-primary mt-2" %>
+  <% end %>
+  <div class="other-user">
+    <%= render 'rejects/reject_button', user: user %>
+  </div>
+</div>
+<div class="profile-xs col-6 d-block d-sm-none mb-4">
+  <img src=<%= user.image %> width="100" height="100" class="profile-image">
+  <h3 class="mt-2 profile-username"><%= user.name %></h3>
+  <p><%= user.profile %></p>
+  <% if current_user.id == user.id %>
+    <%= link_to '編集する', edit_user_path, class: "btn btn-primary mt-2" %>
+    <%= link_to 'ログアウト', logout_path, method: :delete, class: "btn btn-primary mt-2" %>
+  <% end %>
+  <%= render 'rejects/reject_button', user: user %>
+</div>
+
+<div class="right-bar  col-md-6 d-none d-md-block d-lg-none">
+  <%= column_chart @chart, width: '250px',height: '250px' %>
+</div>
+<div class="right-bar col-sm-6 d-none d-sm-block d-md-none">
+  <%= column_chart @chart, width: '250px',height: '250px' %>
+</div>
+<div class="right-bar col-6 d-block d-sm-none">
+  <%= column_chart @chart, width: '235px',height: '235px' %>
+</div>

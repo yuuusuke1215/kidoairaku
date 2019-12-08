@@ -56,4 +56,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari'
 
+gem "chartkick"
+
+gem 'bootstrap-sass'
+
+gem 'jquery-rails'
+
 gem 'carrierwave'

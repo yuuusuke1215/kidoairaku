@@ -8,21 +8,34 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <form class="form-inline mt-2 mt-md-0 mr-2">
-            <input class="form-control mr-sm-2" type="text" placeholder="キーワード検索" aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit"><i class="fas fa-search"></i></button>
-          </form>
-          <li class="nav-item mr-2">
-            <%= link_to new_post_path(current_user), class: 'nav-link mr-2' do %>
+          
+          <li class="nav-item mr-2 d-none d-sm-block">
+            <%= link_to new_post_path(current_user), class: 'nav-link mr-2', data: {"turbolinks" => false} do %>
               <i class="fas fa-edit"></i>
             <% end %>
           </li>
-          <li class="nav-item mr-2">
+          <li class="nav-item mr-2 d-none d-sm-block">
             <%= link_to user_path(current_user), class: 'nav-link mr-2' do %>
               <i class="fas fa-user"></i>
             <% end %>
           </li>
-          <li class="nav-item mr-2"><a href="#" class="nav-link"><i class="fas fa-bell"></i></a></li>
+          <li class="nav-item mr-2 d-none d-sm-block">
+            <%= link_to notifications_path(current_user), class: 'nav-link mr2' do %>
+              <i class="fas fa-bell"></i> <span class="badge badge-light"><%= current_user.passive_notifications.where(checked: false).count %></span>
+            <% end %>
+          </li>
+          
+          <li class="nav-item mr-2 d-block d-sm-none">
+            <%= link_to '投稿',  new_post_path(current_user), class: 'nav-link mr-2' %>
+          </li>
+          <li class="nav-item mr-2 d-block d-sm-none">
+            <%= link_to 'マイページ', user_path(current_user), class: 'nav-link mr-2' %>
+          </li>
+          <li class="nav-item mr-2 d-block d-sm-none">
+            <%= link_to notifications_path(current_user), class: 'nav-link mr2' do %>
+              通知 <span class="badge badge-light"><%= current_user.passive_notifications.where(checked: false).count %></span>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

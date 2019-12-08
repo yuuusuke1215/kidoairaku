@@ -75,6 +75,12 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; }
 .timeline {
   margin-right: auto;
   margin-left: auto;
+  /*
+  border-right: solid 1px #DDDDDD;
+  border-left: solid 1px #DDDDDD;
+  padding-left: 20px;
+  padding-right: 20px;
+  */
 }
 
 .post-left img:hover {
@@ -89,6 +95,15 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; }
   text-decoration: none;　
 }
 
+.content {
+  color: #0000ff;
+  margin-bottom: 1px;
+}
+
+.content .link {
+  text-decoration: none;
+}
+
 .detail-content {
   font-size: 24px;
 }
@@ -99,4 +114,65 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; }
 
 .emotion-body {
   margin-top: 10px;
+}
+
+img {
+  object-fit: cover;
+}
+
+.timeline-profile-image {
+  border-radius: 25px;
+}
+
+.profile-image {
+  border-radius: 50px;
+}
+
+.btn {
+  border-radius: 20px;
+}
+
+.emotion {
+  margin-top: 13px;
+}
+
+.created_at {
+  color: 	#808080;
+  font-size: 14px;
+}
+
+.liked-heart {
+  color: red;
+}
+
+.profile-xs {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.other-user {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.output-article-button {
+  text-align: center;
+}
+
+.image-label {
+  margin-bottom: 3px;
+}
+
+.post-right p {
+  margin-bottom: 1px;
+}
+
+.post-detail {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.comment-title {
+  text-align: center;
 }

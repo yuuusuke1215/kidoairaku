@@ -1,5 +1,5 @@
 class ToppagesController < ApplicationController
   def index
-    @posts = Post.all.order(id: :desc).page(params[:page])
+    @posts = current_user.feed_posts.order(id: :desc)
   end
 end

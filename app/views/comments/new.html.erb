@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3 mt-5">
+    
+
+    
+    <%= form_with(model: @post, local: true) do |f| %>
+    
+      <div class="form-group">
+        <%= f.label :content, '投稿内容'  %>
+        <%= f.text_area :content, size: "10x8", class: 'form-control textarea', placeholder: "今の気持ちを書こう！" %>
+      </div>
+      
+      <div class="check_box">
+        <%= f.check_box :joy %>
+        <%= f.label :joy, "よろこび" %>
+        <%= image_tag 'joy.png', size: "25x25", class: "mr-5" %>
+        
+        <%= f.check_box :angry %>
+        <%= f.label :angry, "怒り" %>
+        <%= image_tag 'angry.png', size: "25x25" %>
+      </div>
+
+      <div class="check_box">
+        <%= f.check_box :sad %>
+        <%= f.label :sad, "かなしい" %>
+        <%= image_tag 'sad.png', size: "25x25", class: "mr-5" %>
+        
+        <%= f.check_box :happy %>
+        <%= f.label :happy, "楽しい" %>
+        <%= image_tag 'happy.png', size: "25x25" %>
+      </div>
+      
+      <div class="custom-file mb-5">
+        <%= f.label :image1, 'サムネイル画像' %><br />
+        <%= f.file_field :image1, class: "image" %>
+      </div>
+      
+      <div class="custom-file mb-5">
+        <%= f.label :image2, 'サムネイル画像' %><br />
+        <%= f.file_field :image2, class: "image" %>
+      </div>
+      
+      <div class="custom-file mb-5">
+        <%= f.label :image3, 'サムネイル画像' %><br />
+        <%= f.file_field :image3, class: "image" %>
+      </div>
+      
+      <div class="custom-file mb-5">
+        <%= f.label :image4, 'サムネイル画像' %><br />
+        <%= f.file_field :image4, class: "image" %>
+      </div>
+      
+      <div class="output-article-button">
+        <%= f.submit '投稿する', class: 'btn-gradient-radius mb-5' %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>

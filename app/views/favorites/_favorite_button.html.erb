@@ -1,0 +1,15 @@
+<% if current_user.favoritePost?(post) %>
+  <div class="button_wrapper">
+    <%= form_with(model: current_user.favorites.find_by(post_id: post.id), id: "like-button", method: :delete) do |f| %>
+      <%= hidden_field_tag :post_id, post.id %>
+      <%= f.submit 'お気に入りから外す', class: 'btn btn-danger btn-sm favorite-button' %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="button_wrapper">
+    <%= form_with(model: current_user.favorites.build, id: "like-button") do |f| %>
+      <%= hidden_field_tag :post_id, post.id %>
+      <%= f.submit 'いいね！', class: 'btn btn-primary btn-sm favorite-button' %>
+    <% end %>
+  </div>
+<% end %>

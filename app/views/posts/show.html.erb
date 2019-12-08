@@ -1,19 +1,20 @@
 <div class="row">
-  <div class="timeline col-sm-12 offset-lg-2 col-lg-6">
+  <div class="post-detail  col-sm-12 offset-lg-3 col-lg-7">
     <div class="mb-5 mt-3">
       <div class="post">
         <div class="post-left">
           <%= link_to user_path(@post.user) do %>
-            <img src=<%= @post.user.image %> width="50" height="50">
+            <img src=<%= @post.user.image %> width="50" height="50" class="profile-image">
           <% end %>
         </div>
               
         <div class="post-right ml-2">
           <p class="username"><%= link_to @post.user.name, user_path(@post.user), class: "link", :style=>"color:black;" %></p>
-          <p class="content detail-content"><%= @post.content %></p>
+          <p class="detail-content"><%= simple_format(@post.content) %></p>
+          <p class="created_at"><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
         </div>
       </div>
-      <div class="emotion">
+      <div class="emotion mb-5 ml-5">
         
         <% if @post.joy? %>
           <%= image_tag 'joy.png', size: "25x25", class: "mr-5 emotion-body" %>
@@ -38,16 +39,88 @@
         <% else %>
           <%= image_tag 'xDwa9RHTN6U7VXT1574252642_1574252647.png', size: "25x25", class: "mr-5 emotion-body" %>
         <% end %>
-        
-        <%= link_to new_post_path(:for_post_id => 2), username: @post.user.name, class: 'nav-link mr-2 comment' do %>
-          <i class="far fa-comment fa-2x"></i>
-        <% end %>
               
         <!-- <%= link_to "投稿を削除する", @post, method: :delete, data: { confirm: "本当に削除してもよいですか?" }, class: 'btn btn-danger btn-sm' %> -->
       </div>
+      <hr>
+      <h4 class="mt-5 mb-4 comment-title"><i class="far fa-comment"></i> コメント一覧</h4>
+      <% @comments.each do |post| %>
+        <div class="mb-5 mt-4">
+          <div class="post">
+            <div class="post-left">
+              <%= link_to user_path(post.user) do %>
+                <img src=<%= post.user.image %> width="50" height="50" class="timeline-profile-image">
+              <% end %>
+            </div>
+            
+            <div class="post-right ml-2">
+              <p class="username"><%= link_to post.user.name, user_path(post.user), class: "link", :style=>"color:black;" %></p>
+              <p class="content"><%= simple_format(post.content) %></p>
+              <p class="created_at"><%= post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+            </div>
+          </div>
+          <div class="emotion ml-5">
+            <% if post.joy? %>
+              <%= image_tag 'joy.png', size: "25x25", class: "mr-5" %>
+            <% else %>
+              <%= image_tag 'TrMNZcqite9ERPy1574251959_1574252009.png', size: "25x25", class: "mr-5" %>
+            <% end %>
+            
+            <% if post.angry? %>
+              <%= image_tag 'angry.png', size: "25x25", class: "mr-5" %>
+            <% else %>
+              <%= image_tag 'b69imeB0ifKLEYj1574252373_1574252384.png', size: "25x25", class: "mr-5" %>
+            <% end %>
+            
+            <% if post.sad? %>
+              <%= image_tag 'sad.png', size: "25x25", class: "mr-5" %>
+            <% else %>
+              <%= image_tag '97UGwqcW1pYLGvY1574252540_1574252550.png', size: "25x25", class: "mr-5" %>
+            <% end %>
+            
+            <% if post.happy? %>
+              <%= image_tag 'happy.png', size: "25x25", class: "mr-5" %>
+            <% else %>
+              <%= image_tag 'xDwa9RHTN6U7VXT1574252642_1574252647.png', size: "25x25", class: "mr-5" %>
+            <% end %>
+            
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <div class="comment-position mt-3">
+        <div class="form-group">
+          <%= form_for [@post, @comment] do |f| %>
+            <div class="form-group">
+              <%= f.label :content, 'コメント内容'  %>
+              <%= f.text_area :content, size: "10x8", class: 'form-control textarea js-text', placeholder: "今の気持ちを書こう！" %>
+              <P class="js-text-count pull-right"></P>
+            </div>
+      
+            <div class="check_box">
+              <%= f.check_box :joy %>
+              <%= f.label :joy, "よろこび" %>
+              <%= image_tag 'joy.png', size: "25x25", class: "mr-5" %>
+        
+              <%= f.check_box :angry %>
+              <%= f.label :angry, "怒り" %>
+              <%= image_tag 'angry.png', size: "25x25" %>
+            </div>
+      
+            <div class="check_box">
+              <%= f.check_box :sad %>
+              <%= f.label :sad, "かなしい" %>
+              <%= image_tag 'sad.png', size: "25x25", class: "mr-5" %>
+              
+              <%= f.check_box :happy %>
+              <%= f.label :happy, "楽しい" %>
+              <%= image_tag 'happy.png', size: "25x25" %>
+            </div>
+            <br>
+            <%= f.submit 'コメントする', class: "mb-5 btn-gradient-radius" %>
+          <% end %>
+          </div>
+        </div>
     </div>
-    <% @posts.each do |post| %>
-      <%= post.content %>
-    <% end %>
   </div>
 </div>
