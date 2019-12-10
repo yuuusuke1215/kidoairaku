@@ -51,6 +51,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: kidoiraku_production
-  username: kidoiraku
-  password: <%= ENV['KIDOIRAKU_DATABASE_PASSWORD'] %>
+  database: message-board_production
+  username: message-board
+  password: <%= ENV['MESSAGE-BOARD_DATABASE_PASSWORD'] %>
