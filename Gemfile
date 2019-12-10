@@ -64,6 +64,4 @@ gem 'jquery-rails'
 
 gem 'carrierwave'
 
-group :production do
-  gem 'pg', '>= 0.18', '< 2.0'
-end
+gem 'pg', '~> 0.19.0', group: :production
