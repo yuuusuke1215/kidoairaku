@@ -7,23 +7,33 @@
       <%= render 'layouts/error_messages', model: f.object %>
       
       <div class="form-group mb-4">
-        <%= f.label :name, 'ユーザーネーム' %>
+        <%= f.label :name, 'ユーザーネーム' %> <span class="badge badge-danger">必須</span>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 
       <div class="form-group mb-4">
-        <%= f.label :email, 'メールアドレス' %>
+        <%= f.label :email, 'メールアドレス' %> <span class="badge badge-danger">必須</span>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group mb-4">
-        <%= f.label :password, 'パスワード' %>
+        <%= f.label :password, 'パスワード' %> <span class="badge badge-danger">必須</span>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
       <div class="form-group mb-4">
-        <%= f.label :password_confirmation, 'パスワードの確認' %>
+        <%= f.label :password_confirmation, 'パスワードの確認' %> <span class="badge badge-danger">必須</span>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :profile, 'プロフィール' %> <span class="badge badge-warning">任意</span>
+        <%= f.text_area :profile, size: "20x10", class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <p class="image-label"><%= f.label :image, 'プロフィール画像' %> <span class="badge badge-warning">任意</span></p> 
+        <%= f.file_field :image %>
       </div>
 
       <%= f.submit '登録する', class: 'btn btn-primary btn-lg mx-auto d-block active mb-4' %>
